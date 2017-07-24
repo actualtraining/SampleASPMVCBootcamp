@@ -52,10 +52,14 @@ namespace SampleWebBlog.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult FormRegistrasi(string firstname,string lastname,
             string email)
         {
-            return Content(firstname + " " + lastname + " " + email);
+            //return Content(firstname + " " + lastname + " " + email);
+            ViewBag.FullName = firstname + " " + lastname;
+            ViewBag.Email = email;
+            return View();
         }
     }
 }
