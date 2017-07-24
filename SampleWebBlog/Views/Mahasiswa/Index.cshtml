@@ -4,31 +4,40 @@
     int count = 0;
 }
 
-<h2>Daftar Mahasiswa</h2>
+<div class="container">
+    <h2>Daftar Mahasiswa</h2>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nim</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>IPK</th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var mhs in Model)
-    {
-        count++;
-        <tr>
-            <td>@count</td>
-            <td>@mhs.Nim</td>
-            <td>@mhs.Nama</td>
-            <td>@mhs.Email</td>
-            <td>@mhs.IPK</td>
-        </tr>
-    }
-    </tbody>
-</table>
-   
 
+    <form method="get" action="@Url.Action("Index","Mahasiswa")" class="form-inline">
+        <div class="form-group">
+            <input type="text" class="form-control" name="keyword" id="keyword" placeholder="search">
+        </div>
+        <button type="submit" class="btn btn-primary">Cari</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nim</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>IPK</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mhs in Model)
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@mhs.Nim</td>
+                    <td>@mhs.Nama</td>
+                    <td>@mhs.Email</td>
+                    <td>@mhs.IPK</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

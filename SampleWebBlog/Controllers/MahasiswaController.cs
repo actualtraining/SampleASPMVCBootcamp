@@ -20,9 +20,13 @@ namespace SampleWebBlog.Controllers
         };
 
         // GET: Mahasiswa
-        public ActionResult Index()
+        public ActionResult Index(string keyword="")
         {
-            return View(lstMhs);
+            List<Mahasiswa> results = lstMhs.OrderBy(m => m.Nama).ToList();
+            if (keyword != string.Empty)
+                results = lstMhs.Where(m => m.Nama.Contains(keyword)).ToList();
+
+            return View(results);
         }
 
         // GET: Mahasiswa/Details/5
