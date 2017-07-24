@@ -5,10 +5,26 @@
 
 <h2>Daftar Mahasiswa</h2>
 
-<ul>
-    @foreach(var mhs in Model)
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nim</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>IPK</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var mhs in Model)
     {
-        <li>@mhs.Nim - @mhs.Nama - @mhs.Email - @mhs.IPK</li>
+        <tr>
+            <td>@mhs.Nim</td>
+            <td>@mhs.Nama</td>
+            <td>@mhs.Email</td>
+            <td>@mhs.IPK</td>
+        </tr>
     }
-</ul>
+    </tbody>
+</table>
+   
 
