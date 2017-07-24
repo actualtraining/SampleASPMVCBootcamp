@@ -51,6 +51,7 @@ namespace SampleWebBlog.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    lstMhs.Add(mahasiswa);
                     return RedirectToAction("Index");
                 }
                 // TODO: Add insert logic here
@@ -58,7 +59,6 @@ namespace SampleWebBlog.Controllers
                 {
                     return View();
                 }
-                
             }
             catch
             {
