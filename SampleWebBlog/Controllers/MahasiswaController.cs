@@ -45,13 +45,20 @@ namespace SampleWebBlog.Controllers
 
         // POST: Mahasiswa/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Mahasiswa mahasiswa)
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction("Index");
+                }
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                else
+                {
+                    return View();
+                }
+                
             }
             catch
             {
