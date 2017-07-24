@@ -188,10 +188,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Registrasi.cshtml" />
     <Content Include="Views\Home\FormRegistrasi.cshtml" />
+    <Content Include="Views\Mahasiswa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Mahasiswa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

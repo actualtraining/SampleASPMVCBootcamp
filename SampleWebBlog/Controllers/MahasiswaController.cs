@@ -22,7 +22,7 @@ namespace SampleWebBlog.Controllers
         // GET: Mahasiswa
         public ActionResult Index()
         {
-            return View();
+            return View(lstMhs);
         }
 
         // GET: Mahasiswa/Details/5

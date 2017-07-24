@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Daftar Mahasiswa</h2>
+
+<ul>
+    @foreach(var mhs in Model)
+    {
+        <li>@mhs.Nim - @mhs.Nama - @mhs.Email - @mhs.IPK</li>
+    }
+</ul>
+
