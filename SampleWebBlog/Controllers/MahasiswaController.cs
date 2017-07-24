@@ -18,8 +18,6 @@ namespace SampleWebBlog.Controllers
             new Mahasiswa{Nim="77889913",Nama="Alex",
                 Email="alex@gmail.com",IPK=3.1}
         };
-        
-       
 
         // GET: Mahasiswa
         public ActionResult Index()
