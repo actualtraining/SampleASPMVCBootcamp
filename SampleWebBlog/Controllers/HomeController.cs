@@ -51,5 +51,11 @@ namespace SampleWebBlog.Controllers
            
             return View();
         }
+
+        public ActionResult FormRegistrasi(string firstname,string lastname,
+            string email)
+        {
+            return Content(firstname + " " + lastname + " " + email);
+        }
     }
 }
