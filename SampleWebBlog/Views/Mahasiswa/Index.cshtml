@@ -1,6 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Daftar Mahasiswa";
+    int count = 0;
 }
 
 <h2>Daftar Mahasiswa</h2>
@@ -8,6 +9,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>No</th>
             <th>Nim</th>
             <th>Nama</th>
             <th>Email</th>
@@ -17,7 +19,9 @@
     <tbody>
     @foreach (var mhs in Model)
     {
+        count++;
         <tr>
+            <td>@count</td>
             <td>@mhs.Nim</td>
             <td>@mhs.Nama</td>
             <td>@mhs.Email</td>
