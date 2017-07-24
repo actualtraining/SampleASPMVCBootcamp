@@ -33,10 +33,15 @@ namespace SampleWebBlog.Controllers
             return Content("Hello " + nama + " ID anda " + id.ToString() + " alamat: " + alamat);
         }
 
-        public ActionResult Registrasi()
+        public ActionResult Registrasi(string nama="",string email="")
         {
-            ViewBag.Nama = "Erick Kurniawan";
-            ViewBag.Email = "erick@actual-training.com";
+            if (nama == string.Empty)
+                ViewBag.Nama = "Erick Kurniawan";
+            else
+                ViewBag.Nama = nama;
+
+            ViewBag.Email = (email == string.Empty ? "erick@gmail.com" : email);
+           
             return View();
         }
     }
