@@ -24,7 +24,9 @@ namespace SampleWebBlog.Controllers
         {
             List<Mahasiswa> results = lstMhs.OrderBy(m => m.Nama).ToList();
             if (keyword != string.Empty)
-                results = lstMhs.Where(m => m.Nama.Contains(keyword)).ToList();
+                results = 
+                    lstMhs.Where(m => m.Nama.ToLower()
+                    .Contains(keyword.ToLower()) || m.Nim.Contains(keyword)).ToList();
 
             return View(results);
         }
