@@ -27,10 +27,15 @@ namespace SampleWebBlog.Controllers
             return View();
         }
 
-        public ActionResult Hello(int id,string nama,string alamat)
+        public ActionResult Hello(int id, string nama, string alamat)
         {
             //test
-            return Content("Hello " + nama + " ID anda "+ id.ToString()+" alamat: "+alamat);
+            return Content("Hello " + nama + " ID anda " + id.ToString() + " alamat: " + alamat);
+        }
+
+        public ActionResult Registrasi()
+        {
+            return View();
         }
     }
 }
