@@ -35,6 +35,13 @@ namespace SampleWebBlog.Controllers
 
         public ActionResult Registrasi(string nama="",string email="")
         {
+            List<string> lstNama = new List<string>();
+            lstNama.Add("Erick");
+            lstNama.Add("Budi");
+            lstNama.Add("Alex");
+
+            ViewBag.ListNama = lstNama;
+
             if (nama == string.Empty)
                 ViewBag.Nama = "Erick Kurniawan";
             else

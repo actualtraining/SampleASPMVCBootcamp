@@ -7,3 +7,10 @@
 <p>Selamat datang @ViewBag.Nama di halaman Registrasi Pengguna</p>
 <p>Email anda adalah : @ViewBag.Email</p>
 
+<ul>
+    @foreach(string nama in ViewBag.ListNama)
+    {
+        <li>@nama</li>
+    }
+</ul>
+
