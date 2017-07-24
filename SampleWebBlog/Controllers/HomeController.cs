@@ -35,6 +35,8 @@ namespace SampleWebBlog.Controllers
 
         public ActionResult Registrasi()
         {
+            ViewBag.Nama = "Erick Kurniawan";
+            ViewBag.Email = "erick@actual-training.com";
             return View();
         }
     }
