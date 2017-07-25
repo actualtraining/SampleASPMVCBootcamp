@@ -48,5 +48,31 @@ namespace SampleWebBlog.DAL
                 return lstCat;
             }
         }
+
+        public void Insert(Category category)
+        {
+            using(SqlConnection conn = new SqlConnection(connStr))
+            {
+                string strSql = @"insert into Categories(CategoryName) 
+                                  values(@CategoryName)";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@CategoryName", category.CategoryName);
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Message);
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+        }
     }
 }
