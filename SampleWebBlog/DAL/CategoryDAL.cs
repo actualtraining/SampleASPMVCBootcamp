@@ -14,18 +14,18 @@ namespace SampleWebBlog.DAL
         private string connStr;
         public CategoryDAL()
         {
-            connStr = 
+            connStr =
                 ConfigurationManager
                 .ConnectionStrings["BootcampDbConnectionString"].ConnectionString;
         }
 
         public List<Category> GetAll()
         {
-            using(SqlConnection conn = new SqlConnection(connStr))
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 List<Category> lstCat = new List<Category>();
                 string strSql = @"select * from Categories order by CategoryName asc";
-                SqlCommand cmd = new SqlCommand(strSql,conn);
+                SqlCommand cmd = new SqlCommand(strSql, conn);
 
                 conn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -51,7 +51,7 @@ namespace SampleWebBlog.DAL
 
         public void Insert(Category category)
         {
-            using(SqlConnection conn = new SqlConnection(connStr))
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 string strSql = @"insert into Categories(CategoryName) 
                                   values(@CategoryName)";
@@ -75,9 +75,9 @@ namespace SampleWebBlog.DAL
             }
         }
 
-        public void Update(string id,Category category)
+        public void Update(string id, Category category)
         {
-            using(SqlConnection conn = new SqlConnection(connStr))
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 string strSql = @"update Categories set CategoryName=@CategoryName 
                                   where CategoryId=@CategoryId";
@@ -100,6 +100,34 @@ namespace SampleWebBlog.DAL
                     cmd.Dispose();
                     conn.Close();
                 }
+            }
+        }
+
+        public Category GetById(string id)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+                Category category = new Category();
+                string strSql = @"select * from Categories where CategoryId=@CategoryId";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@CategoryId", id);
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        category.CategoryId = Convert.ToInt32(dr["CategoryId"]);
+                        category.CategoryName = dr["CategoryName"].ToString();
+                    }
+                }
+                dr.Close();
+                cmd.Dispose();
+                conn.Close();
+
+                return category;
             }
         }
     }
