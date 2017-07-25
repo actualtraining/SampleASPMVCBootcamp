@@ -97,20 +97,21 @@ namespace SampleWebBlog.Controllers
         }
 
         // GET: Mahasiswa/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            Mahasiswa mhs = lstMhs.Where(m => m.Nim == id).FirstOrDefault();
+            return View(mhs);
         }
 
         // POST: Mahasiswa/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id, Mahasiswa mahasiswa)
         {
             try
             {
-                
-
-                return View();
+                Mahasiswa mhs = lstMhs.Where(m => m.Nim == id).FirstOrDefault();
+                lstMhs.Remove(mhs);
+                return RedirectToAction("Index");
             }
             catch
             {

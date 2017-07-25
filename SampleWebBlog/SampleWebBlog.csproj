@@ -191,6 +191,7 @@
     <Content Include="Views\Mahasiswa\Index.cshtml" />
     <Content Include="Views\Mahasiswa\Create.cshtml" />
     <Content Include="Views\Mahasiswa\Edit.cshtml" />
+    <Content Include="Views\Mahasiswa\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
