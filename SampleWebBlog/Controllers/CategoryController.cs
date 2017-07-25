@@ -33,13 +33,17 @@ namespace SampleWebBlog.Controllers
 
         // POST: Category/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Category category)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    CategoryDAL categoryDal = new CategoryDAL();
+                    categoryDal.Insert(category);
+                    return RedirectToAction("Index");
+                }
+                return View();
             }
             catch
             {
