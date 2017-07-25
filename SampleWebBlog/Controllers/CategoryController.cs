@@ -52,9 +52,11 @@ namespace SampleWebBlog.Controllers
         }
 
         // GET: Category/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            CategoryDAL categoryDAL = new CategoryDAL();
+            var model = categoryDAL.GetById(id);
+            return View(model);
         }
 
         // POST: Category/Edit/5
