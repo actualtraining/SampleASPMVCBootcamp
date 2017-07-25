@@ -105,7 +105,7 @@ namespace SampleWebBlog.DAL
 
         public Category GetById(string id)
         {
-            using (SqlConnection conn = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 Category category = new Category();
                 string strSql = @"select * from Categories where CategoryId=@CategoryId";
