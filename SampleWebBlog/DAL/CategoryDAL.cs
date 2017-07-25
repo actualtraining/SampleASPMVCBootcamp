@@ -74,5 +74,33 @@ namespace SampleWebBlog.DAL
                 }
             }
         }
+
+        public void Update(string id,Category category)
+        {
+            using(SqlConnection conn = new SqlConnection(connStr))
+            {
+                string strSql = @"update Categories set CategoryName=@CategoryName 
+                                  where CategoryId=@CategoryId";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@CategoryName", category);
+                cmd.Parameters.AddWithValue("@CategoryId", id);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Message);
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+        }
     }
 }
