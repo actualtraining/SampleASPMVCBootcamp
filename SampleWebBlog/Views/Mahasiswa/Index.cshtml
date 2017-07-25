@@ -8,7 +8,9 @@
 <div class="container">
     <h2>Daftar Mahasiswa</h2>
 
-
+    <a href="@Url.Action("Create","Mahasiswa")" 
+       class="btn btn-warning btn-xs">Tambah Mahasiswa</a>
+    <br /><br />
     <form method="get" action="@Url.Action("Index","Mahasiswa")" class="form-inline">
         <div class="form-group">
             <input type="text" class="form-control" name="keyword" id="keyword" placeholder="search">
@@ -24,6 +26,8 @@
                 <th>Nama</th>
                 <th>Email</th>
                 <th>IPK</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +40,8 @@
                     <td>@mhs.Nama</td>
                     <td>@mhs.Email</td>
                     <td>@mhs.IPK</td>
+                    <td>@Html.ActionLink("edit","Edit",new { id=mhs.Nim })</td>
+                    <td>@Html.ActionLink("delete","Delete",new { id = mhs.Nim })</td>
                 </tr>
             }
         </tbody>

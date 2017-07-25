@@ -67,20 +67,28 @@ namespace SampleWebBlog.Controllers
         }
 
         // GET: Mahasiswa/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            Mahasiswa mhs = lstMhs.Where(m => m.Nim == id).FirstOrDefault();
+            return View(mhs);
         }
 
         // POST: Mahasiswa/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, Mahasiswa mahasiswa)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    Mahasiswa mhs = lstMhs.Where(m => m.Nim == id).FirstOrDefault();
+                    mhs.Nama = mahasiswa.Nama;
+                    mhs.Email = mahasiswa.Email;
+                    mhs.IPK = mahasiswa.IPK;
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                return View();
             }
             catch
             {
@@ -100,9 +108,9 @@ namespace SampleWebBlog.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                
 
-                return RedirectToAction("Index");
+                return View();
             }
             catch
             {
