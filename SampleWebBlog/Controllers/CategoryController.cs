@@ -61,13 +61,17 @@ namespace SampleWebBlog.Controllers
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, Category category)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    CategoryDAL categoryDAL = new CategoryDAL();
+                    categoryDAL.Update(id, category);
+                    return RedirectToAction("Index");
+                }
+                return View();
             }
             catch
             {
