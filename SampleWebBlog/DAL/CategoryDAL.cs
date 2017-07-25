@@ -83,7 +83,7 @@ namespace SampleWebBlog.DAL
                                   where CategoryId=@CategoryId";
                 SqlCommand cmd = new SqlCommand(strSql, conn);
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@CategoryName", category);
+                cmd.Parameters.AddWithValue("@CategoryName", category.CategoryName);
                 cmd.Parameters.AddWithValue("@CategoryId", id);
 
                 try
