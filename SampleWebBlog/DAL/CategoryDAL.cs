@@ -130,5 +130,30 @@ namespace SampleWebBlog.DAL
                 return category;
             }
         }
+
+        public void Delete(string id) {
+            using(SqlConnection conn = new SqlConnection(connStr))
+            {
+                string strSql = @"delete from Categories where CategoryId=@CategoryId";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.AddWithValue("@CategoryId", id);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Message);
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+
+            }
+        }
     }
 }
