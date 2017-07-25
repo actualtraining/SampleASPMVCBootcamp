@@ -80,19 +80,21 @@ namespace SampleWebBlog.Controllers
         }
 
         // GET: Category/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            CategoryDAL categoryDAL = new CategoryDAL();
+            var model = categoryDAL.GetById(id);
+            return View(model);
         }
 
         // POST: Category/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id, Category category)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                CategoryDAL categoryDal = new CategoryDAL();
+                categoryDal.Delete(id);
                 return RedirectToAction("Index");
             }
             catch
